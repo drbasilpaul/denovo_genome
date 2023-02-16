@@ -1,0 +1,39 @@
+#this script will be used to test building human genome from long reads 
+#BSUB -J epiNets
+#BSUB -W 2:00
+#BSUB -o /rsrch3/scratch/anesth/bpaul/gencom-msa/Homo_sapiens
+#BSUB -e /rsrch3/scratch/anesth/bpaul/gencom-msa/Homo_sapiens
+#BSUB -cwd /rsrch3/scratch/anesth/bpaul/gencom-msa/Homo_sapiens
+#BSUB -q short
+#BSUB -u bpaul@mdanderson.org
+#BSUB -n 28
+#BSUB -M 170
+#BSUB -R rusage[mem=170]
+
+#module load sratoolkit
+
+#fastq-dump -A ERR091573
+#wget http://s3.amazonaws.com/nanopore-human-wgs/rel6/FASTQTars/FAB39088-288418386_Multi.tar
+#wget http://s3.amazonaws.com/nanopore-human-wgs/rel6/FASTQTars/FAB39075-4246400039_Multi.tar
+#wget http://s3.amazonaws.com/nanopore-human-wgs/rel6/FASTQTars/FAB39043-3709921973_Multi.tar
+#wget http://s3.amazonaws.com/nanopore-human-wgs/rel6/FASTQTars/FAB42706-4111103328_Multi.tar
+#wget http://s3.amazonaws.com/nanopore-human-wgs/rel6/FASTQTars/FAB41174-3976885577_Multi.tar
+#wget http://s3.amazonaws.com/nanopore-human-wgs/rel6/FASTQTars/FAB42260-4177064552_Multi.tar
+
+#module load shasta/0.7.0
+#
+##for sample in Bham1 Bham4 UBC2 UBC5 UBC6 Notts3
+##do
+#
+####build assembly using shasta
+#$shasta \
+#--config Nanopore-Oct2021.conf \
+#--input Bham1.fastq Bham4.fastq Notts3.fastq UBC2.fastq UBC5_2.fastq \
+#--assemblyDirectory human_sha \
+#--threads 28 \
+#
+#echo " human completed "
+#
+##done
+
+

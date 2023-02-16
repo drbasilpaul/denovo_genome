@@ -1,0 +1,21 @@
+
+#this script will be used to test building genome from short reads 
+
+#BSUB -J Hom_sap
+#BSUB -W 3:00
+#BSUB -o /rsrch3/scratch/anesth/bpaul/gencom-msa/Homo_sapiens
+#BSUB -e /rsrch3/scratch/anesth/bpaul/gencom-msa/Homo_sapiens
+#BSUB -cwd /rsrch3/scratch/anesth/bpaul/gencom-msa/Homo_sapiens
+#BSUB -q highmem
+#BSUB -u bpaul@mdanderson.org
+#BSUB -n 28
+#BSUB -M 1270
+#BSUB -R rusage[mem=1270]
+
+#module load openmpi/gcc/64/1.10.7
+module load abyss/2.3.1
+#module load bwa/0.7.17
+
+abyss-stack-size 2262144 abyss-pe j=28 B=1270G name=sapiens4444 k=48 se="ERR091573_1.fastq ERR091573_2.fastq" aligner=bwa -o sapiens_abyss.fa contigs 2>&1 | tee abyss.log
+
+
